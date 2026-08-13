@@ -1,0 +1,43 @@
+myenv312/
+venv/
+.env
+
+__pycache__/
+*.pyc
+
+.ipynb_checkpoints/
+
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Large datasets
+dataset/
+archive*.zip
+*.zip
+
+# Machine learning model files
+*.keras
+*.h5
+*.pkl
+models/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
