@@ -32,6 +32,9 @@ archive*.zip
 *.pkl
 models/
 
+# Allow the deployment model to be tracked with Git LFS
+!best_pneumonia_cnn.keras
+
 # Streamlit
 .streamlit/secrets.toml
 
