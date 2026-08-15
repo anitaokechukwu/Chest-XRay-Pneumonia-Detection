@@ -43,3 +43,45 @@ Model Evaluation
 Streamlit Application
       ↓
 Cloud Deployment
+
+
+
+The trained model is integrated into an interactive Streamlit web application,
+allowing users to upload a chest X-ray image and obtain a model prediction.
+
+⚠️ Medical Disclaimer: This project is intended strictly for educational, research,
+and portfolio demonstration purposes. It is not a clinically validated diagnostic
+system and must not be used to diagnose or make medical decisions about patients.
+
+
+🚀 Live Demo
+🫁 Try the Application
+
+Launch Chest X-ray Pneumonia Detection App →
+
+The application allows users to:
+
+Upload a chest X-ray image
+Preview the uploaded image
+Run the trained CNN model
+Receive a predicted class
+View the estimated pneumonia probability
+
+
+🎯 Project Objectives
+
+The main objectives of this project were to:
+
+Build a CNN for chest X-ray image classification.
+Develop an image preprocessing pipeline.
+Normalize image pixel values.
+Resize images for CNN input.
+Address class imbalance using class weights.
+Train and evaluate a deep learning model.
+Analyze classification performance using multiple metrics.
+Evaluate model discrimination using ROC-AUC.
+Build an interactive Streamlit application.
+Deploy the trained model as a cloud-based application.
+Demonstrate an end-to-end Healthcare AI workflow.
+
+
