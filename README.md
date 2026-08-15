@@ -41,9 +41,12 @@ Streamlit Application
       ↓
 Cloud Deployment
 
-The trained model is integrated into an interactive Streamlit web application, allowing users to upload a chest X-ray image and obtain a model prediction.
+The trained model is integrated into an interactive Streamlit web application,
+ allowing users to upload a chest X-ray image and obtain a model prediction.
 
-⚠️ Medical Disclaimer: This project is intended strictly for educational, research, and portfolio demonstration purposes. It is not a clinically validated diagnostic system and must not be used to diagnose or make medical decisions about patients.
+⚠️ Medical Disclaimer: This project is intended strictly for educational,
+ research, and portfolio demonstration purposes. It is not a clinically validated
+diagnostic system and must not be used to diagnose or make medical decisions about patients.
 
 🚀 Live Demo
 🫁 Try the Application
@@ -61,77 +64,90 @@ The application allows users to:
 
 The main objectives of this project were to:
 
-Build a CNN for chest X-ray image classification.
-Develop an image preprocessing pipeline.
-Normalize image pixel values.
-Resize images for CNN input.
-Address class imbalance using class weights.
-Train and evaluate a deep learning model.
-Analyze classification performance using multiple metrics.
-Evaluate model discrimination using ROC-AUC.
-Build an interactive Streamlit application.
-Deploy the trained model as a cloud-based application.
-Demonstrate an end-to-end Healthcare AI workflow.
+* Build a CNN for chest X-ray image classification.
+* Develop an image preprocessing pipeline.
+* Normalize image pixel values.
+* Resize images for CNN input.
+* Address class imbalance using class weights.
+* Train and evaluate a deep learning model.
+* Analyze classification performance using multiple metrics.
+* Evaluate model discrimination using ROC-AUC.
+* Build an interactive Streamlit application.
+* Deploy the trained model as a cloud-based application.
+* Demonstrate an end-to-end Healthcare AI workflow.
+
+
 📂 Dataset
 
-The project uses a Chest X-ray Pneumonia dataset containing two image classes:
+# The project uses a Chest X-ray Pneumonia dataset containing two image classes:
 
 NORMAL
 PNEUMONIA
-Dataset Distribution
-Dataset	NORMAL	PNEUMONIA	Total
-Training	1,341	3,875	5,216
-Testing	234	390	624
-Validation	8	8	16
+
 
 The training dataset contains substantially more Pneumonia images than Normal images.
 
 To address this class imbalance, class weights were incorporated during model training.
 
+
 Class Weights
-Class	Weight
-NORMAL	1.9448
-PNEUMONIA	0.6730
+
+| Class                                               | Weight |
+| ---------                                           | -----: |
+| NORMAL                                              | 1.9448 |
+| PNEUMONIA                                           | 0.6730 |
+
+
 🖼️ Image Configuration
-Parameter	Value
-Image Size	224 × 224
-Image Channels	3
-Batch Size	32
-Random Seed	42
-Classification Type	Binary
-Pixel Value Range	0.0 – 1.0
+
+
+| Parameter                          |     Value |
+| -------------------                | --------: |
+| Image Size                         | 224 × 224 |
+| Image Channels                     |         3 |
+| Batch Size                         |        32 |
+| Random Seed                        |        42 |
+| Classification Type                |    Binary |
+| Pixel Value Range                  | 0.0 – 1.0 |
+
+
 
 Images were resized to 224 × 224 pixels and normalized so that pixel values were scaled to the range 0–1.
 
+
 🧠 Deep Learning Model
+
 
 A Convolutional Neural Network (CNN) was developed using TensorFlow/Keras for binary image classification.
 
-Model Specifications
-Specification	Value
-Model Type	Convolutional Neural Network
-Input Shape	224 × 224 × 3
-Total Parameters	11,169,089
-Trainable Parameters	11,169,089
-Non-Trainable Parameters	0
-Model Format	.keras
-Model File	best_pneumonia_cnn.keras
+| Specification                                       |                        Value |
+| ------------------------                            | ---------------------------: |
+| Model Type                                          | Convolutional Neural Network |
+| Input Shape                                         |                224 × 224 × 3 |
+| Total Parameters                                    |                   11,169,089 |
+| Trainable Parameters                                |                   11,169,089 |
+| Non-Trainable Parameters                            |                            0 |
+| Model Format                                        |                     `.keras` |
+| Model File                                          |   `best_pneumonia_cnn.keras` |
+
 
 The trained CNN model was approximately 134 MB and was managed using Git LFS in the GitHub repository.
+
+
 
 ⚙️ Image Preprocessing
 
 The image preprocessing pipeline included:
 
-Loading chest X-ray images.
-Resizing images to 224 × 224.
-Converting images to RGB.
-Normalizing pixel values to the 0–1 range.
-Creating training and validation datasets.
-Applying class weights to address class imbalance.
-Applying image augmentation during model training.
-Preprocessing Pipeline
-Chest X-ray Image
+1. Loading chest X-ray images.
+2. Resizing images to 224 × 224.
+3. Converting images to RGB.
+4. Normalizing pixel values to the 0–1 range.
+5. Creating training and validation datasets.
+6. Applying class weights to address class imbalance.
+7. Applying image augmentation during model training.
+8. Preprocessing Pipeline
+9. Chest X-ray Image
         ↓
 Image Loading
         ↓
@@ -144,82 +160,103 @@ Pixel Normalization
 Data Augmentation
         ↓
 CNN Input
+
+
+
 🏋️ Model Training
 
 The CNN model was trained using TensorFlow/Keras.
 
-Training Configuration
-Parameter	Configuration
-Framework	TensorFlow / Keras
-Model	CNN
-Image Size	224 × 224
-Batch Size	32
-Maximum Epochs	20
-Optimizer	Adam
-Classification	Binary
-Class Imbalance	Class Weights
-Model Checkpointing	Enabled
+| Parameter                                      | Configuration      |
+| -------------------                            | ------------------ |
+| Framework                                      | TensorFlow / Keras |
+| Model                                          | CNN                |
+| Image Size                                     | 224 × 224          |
+| Batch Size                                     | 32                 |
+| Maximum Epochs                                 | 20                 |
+| Optimizer                                      | Adam               |
+| Classification                                 | Binary             |
+| Class Imbalance                                | Class Weights      |
+| Model Checkpointing                            | Enabled            |
+
 
 The best-performing model checkpoint was saved as:
 
 best_pneumonia_cnn.keras
+
+
+
 📊 Model Evaluation
 
 The trained model was evaluated on a separate test dataset containing 624 chest X-ray images.
 
 The evaluation included:
 
-Accuracy
-Precision
-Recall
-F1-score
-Confusion Matrix
-ROC-AUC
+* Accuracy
+* Precision
+* Recall
+* F1-score
+* Confusion Matrix
+* ROC-AUC
+
+
 🏆 Model Performance
 
 The model achieved the following performance on the test dataset:
 
-Metric	Result
-Test Accuracy	81.57%
-Test ROC-AUC	95.66%
-Pneumonia Precision	77.78%
-Pneumonia Recall	98.72%
-Pneumonia F1-score	87.01%
-Normal Precision	96.12%
-Normal Recall	52.99%
-Normal F1-score	68.32%
+| Metric                                           |     Result |
+| -----------------------                          | ---------: |
+| **Test Accuracy**                                | **81.57%** |
+| **Test ROC-AUC**                                 | **95.66%** |
+| **Pneumonia Precision**                          | **77.78%** |
+| **Pneumonia Recall**                             | **98.72%** |
+| **Pneumonia F1-score**                           | **87.01%** |
+| **Normal Precision**                             | **96.12%** |
+| **Normal Recall**                                | **52.99%** |
+| **Normal F1-score**                              | **68.32%** |
+
+
+
+
 📋 Classification Report
-              precision    recall  f1-score   support
+
+              precision       recall     f1-score      support
 
 
-NORMAL          0.9612    0.5299    0.6832       234
-PNEUMONIA       0.7778    0.9872    0.8701       390
+NORMAL          0.9612         0.5299      0.6832         234
+PNEUMONIA       0.7778         0.9872      0.8701         390
 
 
-accuracy                            0.8157       624
+accuracy                                    0.8157         624
 
 
-macro avg       0.8695    0.7585    0.7766       624
-weighted avg    0.8466    0.8157    0.8000       624
+macro avg       0.8695          0.7585       0.7766        624
+weighted avg    0.8466          0.8157       0.8000        624
+
+
+
 🧩 Confusion Matrix
 
 The model produced the following confusion matrix on the test set:
 
-                 Predicted
+                                Predicted
               NORMAL  PNEUMONIA
 
 
-Actual NORMAL    124       110
-Actual PNEUMONIA   5       385
-Confusion Matrix Interpretation
-Actual Class	Predicted NORMAL	Predicted PNEUMONIA
-NORMAL	124	110
-PNEUMONIA	5	385
+| Actual Class |               Predicted NORMAL |         Predicted PNEUMONIA |
+| ------------ |               ---------------: |         ------------------: |
+| NORMAL       |                            124 |                         110 |
+| PNEUMONIA    |                              5 |                         385 |
+
+
+
 
 The model correctly classified:
 
 124 NORMAL images.
 385 PNEUMONIA images.
+
+
 
 The model incorrectly classified:
 
@@ -232,8 +269,12 @@ The model achieved a 98.72% recall for Pneumonia.
 
 Out of 390 Pneumonia images:
 
+
+
 385 → Correctly classified as PNEUMONIA
 5   → Classified as NORMAL
+
+
 
 This indicates that the model identified the large majority of Pneumonia images in the test dataset.
 
@@ -249,20 +290,26 @@ A total of 110 NORMAL images were classified as PNEUMONIA.
 
 This resulted in a relatively high false-positive rate for the Normal class and is an important limitation of the current model.
 
+
+
 🧪 Prediction Testing
 
 The trained model was tested using chest X-ray images from the test dataset.
 
 Example 1 — Pneumonia
+
 Actual Class: PNEUMONIA
 Predicted Class: PNEUMONIA
 Pneumonia Probability: 99.92%
+
 Example 2 — Normal
+
 Actual Class: NORMAL
 Predicted Class: NORMAL
 Pneumonia Probability: 38.59%
 
 These tests demonstrate that the deployed prediction pipeline can process both NORMAL and PNEUMONIA chest X-ray images.
+
 
 🖥️ Streamlit Application
 
@@ -284,6 +331,8 @@ Predicted Class
 Pneumonia Probability
 
 The application provides a simple interface for demonstrating the trained deep learning model.
+
+
 
 🛠️ Technology Stack
 Programming
@@ -507,14 +556,14 @@ This project demonstrates how machine learning can be explored within healthcare
 
 Rather than evaluating the model using accuracy alone, this project considers:
 
-Precision
-Recall
-F1-score
-ROC-AUC
-False positives
-False negatives
-Class imbalance
-Model limitations
+* Precision
+* Recall
+* F1-score
+* ROC-AUC
+* False positives
+* False negatives
+* Class imbalance
+* Model limitations
 
 This provides a broader perspective on evaluating machine learning systems in healthcare-related applications.
 
@@ -525,11 +574,15 @@ Healthcare Data Analyst | Data Science | Machine Learning | Healthcare AI
 
 Interested in applying Data Analytics, Machine Learning, Deep Learning, and Cloud Technologies to healthcare problems.
 
+
 ⭐ Project Highlight
+
 
 Developed and deployed a CNN-based chest X-ray classification system achieving 95.66% test ROC-AUC and 98.72% Pneumonia recall, with an interactive Streamlit application for chest X-ray image classification.
 
+
 ⚠️ Medical Disclaimer
+
 
 This project is intended solely for educational, research, and portfolio demonstration purposes.
 
@@ -538,6 +591,7 @@ The predictions generated by this application are outputs of a machine-learning 
 This application is not a substitute for professional medical evaluation, clinical judgment, or diagnostic testing.
 
 Always consult a qualified healthcare professional for medical evaluation and diagnosis.
+
 
 🔗 Project Links
 🚀 Live Streamlit Application
